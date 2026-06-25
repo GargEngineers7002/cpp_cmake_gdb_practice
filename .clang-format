@@ -1,1 +1,2 @@
 BreakBeforeBraces: Allman
+ColumnLimit: 200
