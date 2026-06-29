@@ -4,29 +4,22 @@
 
 int main()
 {
-  int i = 8;
-  std::cout << x << std::endl; // hi
-  foo(i);
-  std::cout << x << std::endl; // hi
-  [[maybe_unused]] int z;      // just allots a memory location (not clean)(doesn't compile with
-  // -Werror) called default initialization
-
-  // Traditional initialization forms:
-  [[maybe_unused]] int a = 4; // copy initialization
-  [[maybe_unused]] int b(4);  // direct initialization
-
-  // Modern initialization forms (preferred):
-  [[maybe_unused]] int d{7}; // direct-list-initialization (initial value in braces)
-  [[maybe_unused]] int e{};  // value-initialization (empty braces)
-  int j{};                   // zero initialization
-  std::cout << j << std::endl;
-  try
-  {
-    throw std::runtime_error("disk");
-  }
-  catch (const std::runtime_error &s) // Caught by VALUE(Inefficient)
-  {
-    std::cout << s.what() << std::endl;
-  }
+  int i{4};
+  std::cout << "Hello World\n";
+  bool b{0};
+  char c{30}; // unprintable for 0-32 and 127
+  char d{};
+  std::cout << "d = " << d - 0 << '!\n'; // multicharacter literal problem
+  std::cout << "c = " << c << '\n';
+  std::cout << "i = " << i << '/n'; // multicharacter literal problem
+  std::cout << "b = " << b << '\n';
+  std::cout << "enter a number: ";
+  std::cin >> i;
+  std::cout << "i = " << i << '\n';
+  char j{97};
+  std::cout << "j = " << j << '\n';
+  std::cout << "enter two numbers: ";
+  std::cin >> i >> j;
+  std::cout << "i = " << i << ", j = " << j << '\n';
   return 0;
 }
