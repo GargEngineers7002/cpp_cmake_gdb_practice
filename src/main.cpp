@@ -1,25 +1,18 @@
 #include "index.h"
+#include <cstdint>
 #include <iostream>
-#include <unistd.h>
+#include <ostream>
 
 int main()
 {
-  int i{4};
-  std::cout << "Hello World\n";
-  bool b{0};
-  char c{30}; // unprintable for 0-32 and 127
-  char d{};
-  std::cout << "d = " << d - 0 << '!\n'; // multicharacter literal problem
-  std::cout << "c = " << c << '\n';
-  std::cout << "i = " << i << '/n'; // multicharacter literal problem
-  std::cout << "b = " << b << '\n';
-  std::cout << "enter a number: ";
-  std::cin >> i;
-  std::cout << "i = " << i << '\n';
-  char j{97};
-  std::cout << "j = " << j << '\n';
-  std::cout << "enter two numbers: ";
-  std::cin >> i >> j;
-  std::cout << "i = " << i << ", j = " << j << '\n';
+  int32_t a{}; // avoiding implementation defined behavior
+  std::cin >> a;
+  std::cout << a << std::endl;
+  int arr[a]; // according to teh standard, this is not allowed so does not compile wiht -pedantic-errors
+  // but when compiles results in undefined behavior and shows the value already in the memory
+  // this will compile without -pedantic-errors but will fail if using the MSVC compiler
+  // GCC specific extension
+  std::cout << arr[0] << std::endl;
+  std::cout << sizeof(int) << std::endl; // implementation defined (could be 4 or 2 depending on the compiler)
   return 0;
 }
