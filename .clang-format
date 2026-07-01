@@ -1,2 +1,6 @@
 BreakBeforeBraces: Allman
-ColumnLimit: 200
+ColumnLimit: 80
+AlignConsecutiveAssignments:
+  Enabled: true
+  AlignCompound: true
+AlignTrailingComments: true
