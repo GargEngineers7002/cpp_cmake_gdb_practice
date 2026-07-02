@@ -5,17 +5,12 @@
 
 int main()
 {
-  std::cout << "Hello"
-               " World !" // so 2 quoted texts can be concatenated automatically
-                          // over any whitespace
-            << '\n';      // hi this is testing
-                          // thi is aloso
-                          // thisnt
-                          // testing
+  std::cout << "Enter a number: ";
 
-  [[maybe_unused]] int cost         &= 2; // just for seeing .clang-format work
-  [[maybe_unused]] int pricePerItem  = 10;
-  [[maybe_unused]] int hiya          = 3;
-  [[maybe_unused]] uint32_t items    = 10;
+  int n{};
+  std::cin >> n;
+
+  std::cout << "the double is: " << 2 * n << std::endl;
+  std::cout << "the triple is: " << 3 * n << std::endl;
   return 0;
 }
