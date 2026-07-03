@@ -1,0 +1,25 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "multi-config-base",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "release",
+      "configurePreset": "multi-config-base",
+      "configuration": "Release"
+    },
+    {
+      "name": "debug",
+      "configurePreset": "multi-config-base",
+      "configuration": "Debug"
+    }
+  ]
+}

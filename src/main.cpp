@@ -1,5 +1,4 @@
 #include "index.h"
-#include <cstdint>
 #include <iostream>
 #include <ostream>
 
@@ -7,10 +6,14 @@ int main()
 {
   std::cout << "Enter a number: ";
 
-  int n{};
-  std::cin >> n;
+  int i{};
+  std::cin >> i;
 
-  std::cout << "the double is: " << 2 * n << std::endl;
-  std::cout << "the triple is: " << 3 * n << std::endl;
-  return 0;
+  std::cout << "Enter another number: ";
+
+  int j{};
+  std::cin >> j;
+
+  std::cout << i << " + " << j << " is " << i + j << ".\n";
+  std::cout << i << " - " << j << " is " << i - j, std::cout << ".\n";
 }
