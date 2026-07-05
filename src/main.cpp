@@ -3,4 +3,8 @@
 #include <iostream>
 #include <ostream>
 
-int main() { fmt::print("Hello, {}!\n", "World"); }
+void baz();
+
+void bar() { baz(); }
+void baz() { bar(); }
+int main() { bar(); }

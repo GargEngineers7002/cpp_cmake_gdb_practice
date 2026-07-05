@@ -1,3 +1,4 @@
+##[==[
 cmake_minimum_required(VERSION 3.20)
 
 # -------------------------------------------------------------------
@@ -93,3 +94,17 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 set_target_properties(${PROJECT_NAME} PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
+#]==]
+
+
+ #[=[
+cmake_minimum_required(VERSION 3.20)
+
+project(myApp VERSION 0.1.0 LANGUAGES CXX)
+
+find_package(fmt CONFIG REQUIRED)
+
+add_executable(mainTool src/main.cpp src/index.cpp)
+
+target_link_libraries(mainTool PRIVATE fmt::fmt)
+#]=]
