@@ -4,19 +4,6 @@
 #include <iostream>
 #include <ostream>
 
-// compiles without -Werrors flag and does segmentation fault and crashes in
-// linux
-// supposed to do undefined behavior
-int func()
-{
-  fmt::print("Enter a number: ");
-  int n{};
-  std::cin >> n;
-}
+int add(int x, int y); // causes a linker error
 
-int main()
-{
-  int n{func()};
-  fmt::print("{}", n * 2);
-  return 0;
-}
+int main() { int n{add(1, 2)}; }
