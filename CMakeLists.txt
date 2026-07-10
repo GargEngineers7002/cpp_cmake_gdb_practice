@@ -38,7 +38,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR
     -Wall
     -Wextra
     -Wpedantic          # matches -pedantic-errors from note.md
-    # -Werror             # treat all warnings as errors
+    -Werror             # treat all warnings as errors
     -Weffc++
     -Wconversion
     -Wsign-conversion

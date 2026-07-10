@@ -1,5 +1,5 @@
 #pragma once
 
-extern int x;
+extern int p;
 
 void foo(int);

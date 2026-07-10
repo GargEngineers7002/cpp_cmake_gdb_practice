@@ -1,5 +1,5 @@
 #include "index.h"
 
-int x = 4;
+int p = 4;
 
-void foo(int y) { x = y; }
+void foo(int y) { p = y; }
