@@ -12,6 +12,11 @@ project(
 )
 
 # -------------------------------------------------------------------
+# Testing
+# -------------------------------------------------------------------
+enable_testing()
+
+# -------------------------------------------------------------------
 # C++ Standard
 # -------------------------------------------------------------------
 set(CMAKE_CXX_STANDARD 20)
@@ -65,6 +70,7 @@ endif()
 # find dependencies
 # -------------------------------------------------------------------
 find_package(fmt CONFIG REQUIRED)
+find_package(GTest CONFIG REQUIRED)
 
 # -------------------------------------------------------------------
 # Sources and executable
@@ -76,10 +82,13 @@ set(SOURCES
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
+add_executable(addtest test/test.cpp src/index.cpp)
+
 # -------------------------------------------------------------------
 # Link libraries
 # -------------------------------------------------------------------
 target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
+target_link_libraries(addtest PRIVATE GTest::gtest GTest::gtest_main)
 
 # -------------------------------------------------------------------
 # Include directories
@@ -87,6 +96,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
 target_include_directories(${PROJECT_NAME} PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
+target_include_directories(addtest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # -------------------------------------------------------------------
 # Output directory (optional — keeps the build tree tidy)
@@ -94,6 +104,15 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 set_target_properties(${PROJECT_NAME} PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
 )
+set_target_properties(addtest PROPERTIES
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Tests"
+)
+
+# -------------------------------------------------------------------
+# Tell CMake to automatically find your GTest macros
+# -------------------------------------------------------------------
+include(GoogleTest)
+gtest_discover_tests(addtest)
 #]==]
 
 
@@ -102,9 +121,17 @@ cmake_minimum_required(VERSION 3.20)
 
 project(myApp VERSION 0.1.0 LANGUAGES CXX)
 
+enable_testing()
+
 find_package(fmt CONFIG REQUIRED)
 
 add_executable(mainTool src/main.cpp src/index.cpp)
 
+add_executable(addtest test/test.cpp src/index.cpp)
+
 target_link_libraries(mainTool PRIVATE fmt::fmt)
+
+add_test(NAME addition COMMAND addtest)
+
+target_include_directories(addtest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 #]=]

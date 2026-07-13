@@ -4,6 +4,7 @@
 int p = 4;
 
 void foo(int y) { p = y; }
+
 int getInteger()
 {
   std::cout << "Enter an integer: ";
@@ -11,3 +12,5 @@ int getInteger()
   std::cin >> x;
   return x;
 }
+
+int add(int x, int y) { return x + y; }
