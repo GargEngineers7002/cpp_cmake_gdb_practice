@@ -14,3 +14,10 @@ int getInteger()
 }
 
 int add(int x, int y) { return x + y; }
+
+void prntJoe()
+{
+#ifdef PRINT_JOE
+  std::cout << "joe" << std::endl;
+#endif
+}
